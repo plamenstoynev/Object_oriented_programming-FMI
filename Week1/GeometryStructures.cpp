@@ -6,7 +6,12 @@ struct Point{
     int y;
 };
 
-int getQuadrant(Point p){
+void inputPoint(Point& point){
+    std::cin >> point.x;
+    std::cin >>point.y;
+}
+
+int getQuadrant(const Point& p){
     if(p.x > 0, p.y >0)
         return 1;
     else if(p.x < 0, p.y>0)
@@ -57,7 +62,7 @@ struct Vector{
     unsigned int n;
 };
 
-double scalarProduct(Vector vector){
+double scalarProduct(const Vector& vector){
     double result;
 
     for(size_t i = 0; i < vector.n; i++){
@@ -69,6 +74,6 @@ double scalarProduct(Vector vector){
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
     return 0;
 }
