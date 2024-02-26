@@ -36,6 +36,11 @@ struct Circle{
     Point center;
 };
 
+void inputCirlce(Circle& cirlce){
+    inputPoint(cirlce.center);
+    std::cin >> cirlce.r;
+}
+
 bool isLieCounter(const Point& point,const Circle& circle){
     return distancePoints(point, circle.center) == circle.r;
 }
@@ -62,6 +67,12 @@ struct Vector{
     unsigned int n;
 };
 
+void inputVector(Vector& vector){
+    for(size_t i = 0; i < vector.n; i++){
+        std::cin >> vector.points[i];
+    }
+}
+
 double scalarProduct(const Vector& vector){
     double result;
 
@@ -74,6 +85,27 @@ double scalarProduct(const Vector& vector){
 
 
 int main() {
+    Point point1;
+    Point point2;
+    std::cout << "Input x and y for the point1 and point 2" << std::endl;
+    inputPoint(point1);
+    inputPoint(point2);
+    std::cout << "The point1 is in " << getQuadrant(point1) << " quadrant" << std::endl;
+
+
+
+    Circle cirlce1;
+    Circle circle2;
+    std::cout << "Input the center and radius for a circle1 and circle 2" << std::endl;
+    inputCirlce(cirlce1);
+    inputCirlce(circle2);
+
+
+
+
+    std::cout << std::boolalpha << isLieCounter(point1, cirlce1);
+    std::cout << std::boolalpha<< isCrosses(cirlce1, circle2);
+    std::cout << std::boolalpha << isInCircle(cirlce1, circle2);
 
     return 0;
 }
