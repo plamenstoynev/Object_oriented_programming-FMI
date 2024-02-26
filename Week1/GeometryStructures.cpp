@@ -68,6 +68,7 @@ struct Vector{
 };
 
 void inputVector(Vector& vector){
+    std::cin >> vector.n;
     for(size_t i = 0; i < vector.n; i++){
         std::cin >> vector.points[i];
     }
@@ -107,5 +108,11 @@ int main() {
     std::cout << std::boolalpha<< isCrosses(cirlce1, circle2);
     std::cout << std::boolalpha << isInCircle(cirlce1, circle2);
 
+
+
+    Vector vector;
+    inputVector(vector);
+
+    std::cout << "Dot product: " << scalarProduct(vector);
     return 0;
 }
