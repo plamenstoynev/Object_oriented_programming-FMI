@@ -85,6 +85,28 @@ double scalarProduct(const Vector& vector){
 }
 
 
+struct Line{
+    int n;
+};
+
+void inputLine(Line& line){
+    std::cin >> line.n;
+}
+
+void sortLines(Line* lines, size_t size){
+    size_t minIndex;
+    for(size_t i = 0; i < size; i++){
+        minIndex = i;
+        for(size_t j = 0; j < size; j++) {
+            if (lines[i].n > lines[j].n)
+                minIndex = j;
+        }
+        if(minIndex != i)
+            std::swap(lines[i], lines[minIndex]);
+    }
+}
+
+
 int main() {
     Point point1;
     Point point2;
@@ -104,15 +126,30 @@ int main() {
 
 
 
-    std::cout << std::boolalpha << isLieCounter(point1, cirlce1);
-    std::cout << std::boolalpha<< isCrosses(cirlce1, circle2);
-    std::cout << std::boolalpha << isInCircle(cirlce1, circle2);
+    std::cout << std::boolalpha << isLieCounter(point1, cirlce1) << std::endl;
+    std::cout << std::boolalpha<< isCrosses(cirlce1, circle2) << std::endl;
+    std::cout << std::boolalpha << isInCircle(cirlce1, circle2) << std::endl;
 
 
 
     Vector vector;
     inputVector(vector);
-
     std::cout << "Dot product: " << scalarProduct(vector);
+
+
+    size_t size;
+    std::cout << "Enter how many lines you want" << std::endl;
+    std::cin >> size;
+    Line* lines = new Line[size];
+    for (size_t i = 0; i < size; ++i)
+        inputLine(lines[i]);
+
+    sortLines(lines, size);
+
+    for (size_t i = 0; i < size; ++i)
+        std::cout << lines[i].n << std::endl;
+
+
+    delete[]lines;
     return 0;
 }
