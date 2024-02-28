@@ -50,9 +50,9 @@ bool isCrosses(const Circle& circle1, const Circle& circle2){
     double sumOfR = circle1.r + circle2.r;
 
     if(centerDist < sumOfR)
-        return false;
-    else
         return true;
+    else
+        return false;
 }
 
 bool isInCircle(const Circle& circle1, const Circle& circle2){
