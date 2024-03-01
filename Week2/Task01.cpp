@@ -1,3 +1,5 @@
-//
-// Created by plame on 3/1/2024.
-//
+#include <iostream>
+
+int main(){
+
+}

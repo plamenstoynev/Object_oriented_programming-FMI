@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct Product{
-    char description[32];
+    char description[33];
     int partNum;
     double cost;
 };

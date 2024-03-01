@@ -13,7 +13,7 @@ enum Drinks{
 };
 
 struct Person{
-    char name[31];
+    char name[32];
     bool drink[8];
 };
 void inputPerson(Person& person,char name[31], bool drink[8]){
