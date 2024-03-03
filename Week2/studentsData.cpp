@@ -17,13 +17,18 @@ void inputStudent(Student& student){
     std::cin >> student.averageGarde;
 }
 
-void writeStudentToFile(Student* student){
-    std::ifstream file(FILE_NAME);
+void writeStudentToFile(Student* student, size_t size){
+    std::ofstream file(FILE_NAME);
 
     if(!file.is_open())
         std::cout << "Can't be open to write" << std::endl;
 
-
+    std::cout << "Input information for students in this categories => faculty number, name, major and average grade" << std::endl;
+    for(size_t i = 0; i < size; i++){
+        inputStudent(student[i]);
+        file << student[i].facultyNumber << ';' << student[i].name << ';' << student[i].major << ';' << student[i].averageGarde <<'\n';
+        std::cin.ignore();
+    }
 }
 
 void readStudentsFromFile(){
@@ -31,5 +36,7 @@ void readStudentsFromFile(){
 }
 
 int main(){
+    Student students[100];
+    writeStudentToFile(students, 2);
     return 0;
 }
