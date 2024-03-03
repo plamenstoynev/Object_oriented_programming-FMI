@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 const char* FILE_NAME = "students_data.txt";
 
@@ -17,6 +18,37 @@ void inputStudent(Student& student){
     std::cin >> student.averageGarde;
 }
 
+void getStudentFromBuffer(const char* str, Student& student){
+    char helper[100];
+    size_t indexHelper = 0;
+    size_t inputHelper = 0;
+    while(*str != '\0'){
+        if(*str == ';'){
+            switch(inputHelper) {
+                case 0:
+                    strcpy(student.facultyNumber, helper);
+                    break;
+                case 1:
+                    strcpy(student.name, helper);
+                    break;
+                case 2:
+                    strcpy(student.major, helper);
+                    break;
+            }
+            inputHelper++;
+            str++;
+            indexHelper = 0;
+            helper[indexHelper] = '\0';
+
+        }
+        helper[indexHelper] = *str;
+        indexHelper++;
+        str++;
+    }
+    student.averageGarde = helper[0];
+
+}
+
 void writeStudentToFile(Student* student, size_t size){
     std::ofstream file(FILE_NAME);
 
@@ -31,12 +63,21 @@ void writeStudentToFile(Student* student, size_t size){
     }
 }
 
-void readStudentsFromFile(){
-    std::ofstream (FILE_NAME);
+void readStudentsFromFile(Student* students, size_t size){
+    std::ifstream file(FILE_NAME);
+    char buffer[1024];
+
+    if(!file.is_open())
+        std::cout << "Can't be open to read" << std::endl;
+
+    for(size_t i = 0; i < size; i++){
+        file.getline(buffer, 1024);
+        getStudentFromBuffer(buffer, students[i]);
+    }
 }
 
 int main(){
     Student students[100];
-    writeStudentToFile(students, 2);
+    readStudentsFromFile(students,2);
     return 0;
 }
