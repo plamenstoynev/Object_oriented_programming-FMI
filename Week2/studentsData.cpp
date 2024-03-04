@@ -14,7 +14,7 @@ struct Student{
 void inputStudent(Student& student){
     std::cin.getline(student.facultyNumber, 11);
     std::cin.getline(student.name, 31);
-    std::cin.getline(student.major, 3);
+    std::cin.getline(student.major, 2);
     std::cin >> student.averageGarde;
 }
 
@@ -103,12 +103,31 @@ void readStudentsFromFile(Student* students, size_t size){
     }
 }
 
-void getHighestGradeStudent(Student* students, size_t size, const char* major){
-    
+void getHighestGradeStudentMajor(Student* students, size_t size, const char* major){
+    double avgGrade = 0;
+    size_t index = -1;
+    for(size_t i = 0; i < size; i ++){
+        if(avgGrade < students[i].averageGarde && strcmp(students[i].major, major)) {
+            avgGrade = students[i].averageGarde;
+            index = i;
+        }
+    }
+    std::cout << students[index].name << " " << avgGrade << std::endl;
+}
+
+void getAverageGradeMajor(Student* students, size_t size, const char* major){
+    double avgGrade = 0;
+    for(size_t i = 0; i < size; i++){
+        if(strcmp(students[i].major, major))
+            avgGrade += students[i].averageGarde;
+    }
+    avgGrade = avgGrade / size;
+    std::cout << avgGrade;
 }
 
 int main(){
     Student student[100];
     readStudentsFromFile(student, 2);
+    getHighestGradeStudentMajor(student, 2, "IS");
     return 0;
 }
