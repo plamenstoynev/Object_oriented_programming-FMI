@@ -18,8 +18,32 @@ void inputStudent(Student& student){
     std::cin >> student.averageGarde;
 }
 
+//this func is get from AI bot
+double stringToDouble(const char* str) {
+    double result = 0.0;
+    double factor = 1.0;
+    bool decimalPointEncountered = false;
+    for (; *str; ++str) {
+        if (*str == '.') {
+            decimalPointEncountered = true;
+            continue;
+        }
+        int digit = *str - '0';
+        if (digit >= 0 && digit <= 9) {
+            if (decimalPointEncountered) {
+                factor /= 10.0;
+                result += digit * factor;
+            } else {
+                result = result * 10.0 + digit;
+            }
+        }
+    }
+    return result;
+}
+
 void getStudentFromBuffer(const char* str, Student& student){
     char helper[100];
+    char empty[100];
     size_t indexHelper = 0;
     size_t inputHelper = 0;
     while(*str != '\0'){
@@ -34,18 +58,21 @@ void getStudentFromBuffer(const char* str, Student& student){
                 case 2:
                     strcpy(student.major, helper);
                     break;
+                case 3:
+                    helper[indexHelper] = '\0';
+                    student.averageGarde = stringToDouble(helper);
+                    break;
             }
             inputHelper++;
             str++;
             indexHelper = 0;
-            helper[indexHelper] = '\0';
+            strcpy(helper, empty);
 
         }
         helper[indexHelper] = *str;
         indexHelper++;
         str++;
     }
-    student.averageGarde = helper[0];
 
 }
 
@@ -58,7 +85,7 @@ void writeStudentToFile(Student* student, size_t size){
     std::cout << "Input information for students in this categories => faculty number, name, major and average grade" << std::endl;
     for(size_t i = 0; i < size; i++){
         inputStudent(student[i]);
-        file << student[i].facultyNumber << ';' << student[i].name << ';' << student[i].major << ';' << student[i].averageGarde <<'\n';
+        file << student[i].facultyNumber << ';' << student[i].name << ';' << student[i].major << ';' << student[i].averageGarde <<';' << '\n';
         std::cin.ignore();
     }
 }
@@ -76,8 +103,12 @@ void readStudentsFromFile(Student* students, size_t size){
     }
 }
 
+void getHighestGradeStudent(Student* students, size_t size, const char* major){
+    
+}
+
 int main(){
-    Student students[100];
-    readStudentsFromFile(students,2);
+    Student student[100];
+    readStudentsFromFile(student, 2);
     return 0;
 }
