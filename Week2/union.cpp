@@ -63,5 +63,38 @@ double areaOfShape(const Shape& shape, const ShapeType& type){
 }
 
 int main(){
+    Shape shape;
+    ShapeType type;
+    std::cout << "Enter type of shape" << std::endl;
+    std::cout << "1 for Square" << std::endl;
+    std::cout << "2 for Circle" << std::endl;
+    std::cout << "3 for Rectangle" << std::endl;
+    int choice;
+    std::cin >> choice;
+    switch (choice) {
+        case 1:
+            type = ShapeType::Square;
+            std::cout << "Enter first point" << std::endl;
+            inputPoint(shape.square.point1);
+            std::cout << "Enter second point" << std::endl;
+            inputPoint(shape.square.point2);
+            break;
+        case 2:
+            type = ShapeType::Circle;
+            std::cout << "Enter center" << std::endl;
+            inputPoint(shape.circle.center);
+            std::cout << "Enter radius" << std::endl;
+            std::cin >> shape.circle.r;
+            break;
+        case 3:
+            type = ShapeType::Rectangle;
+            std::cout << "Enter first point" << std::endl;
+            inputPoint(shape.rectangle.point1);
+            std::cout << "Enter second point" << std::endl;
+            inputPoint(shape.rectangle.point2);
+            break;
+    }
+    std::cout << "Area of shape is: " << areaOfShape(shape, type) << std::endl;
+    return 0;
 
 }
