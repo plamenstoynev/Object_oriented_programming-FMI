@@ -21,5 +21,5 @@ unsigned sizeOfFile(const char* FILE_NAME){
 }
 
 int main(){
-    std::cout << sizeOfFile("sizeOfFile.cpp") << std::endl;
+    std::cout << sizeOfFile("Week3/sizeOfFile.cpp") << std::endl;
 }
