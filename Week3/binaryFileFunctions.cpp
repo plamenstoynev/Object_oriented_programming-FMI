@@ -44,9 +44,24 @@ void readFromBinaryFile(const char* FILE_NAME, int* arr, unsigned &size){
 
 }
 
-int main(){
-    int arr[5] = {};
-    unsigned size = 5;
+int maxElement(const char* FILE_NAME, int* arr, unsigned &size){
     readFromBinaryFile(FILE_NAME, arr, size);
+    int max = -1;
+    for(int i = 0; i < size; i++){
+        if(arr[i] > max)
+            max = arr[i];
+    }
+
+    return max;
+}
+
+
+int main(){
+    int writeArr[5] = {1,2,3,4,5};
+    int readArr[5] = {};
+    unsigned size = 5;
+    writeInBinaryFile(FILE_NAME, writeArr, size);
+    readFromBinaryFile(FILE_NAME, readArr, size);
+    std::cout << maxElement(FILE_NAME, readArr, size) << std::endl;
     return 0;
 }
