@@ -11,7 +11,7 @@ unsigned sizeOfFile(const char* FILE_NAME){
 
     temp = file.tellg();
 
-    file.seekg(std::ios::end);
+    file.seekg(0,std::ios::end);
     size = file.tellg();
 
     file.seekg(temp);
