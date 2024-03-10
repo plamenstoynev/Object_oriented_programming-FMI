@@ -3,13 +3,14 @@
 
 const char* FILE_NAME = "people.dat";
 
+const size_t sizeOfName = 24;
+
 struct Person{
-    char name[24];
+    char name[sizeOfName];
     unsigned salary;
 };
 
 void inputPerson(Person& person){
-    std::cin.clear();
     std::cin >> person.name;
     std::cin >> person.salary;
 }
@@ -89,5 +90,6 @@ int main(){
     Person* people = new Person[size];
     readFromFile(FILE_NAME, people);
     printOverAvgSalary(people,size);
+    delete[] people;
     return 0;
 }
