@@ -33,9 +33,12 @@ struct Store{
     double profit;
 
     Store() = default;
-    Store(const char* name, const char* address, Product* products, double profit){
+    Store(const char* name, const char* address, Product* products, double profit, size_t sizeOfProducts){
         strcpy(this->name, name);
         strcpy(this->address, address);
+        for(size_t i = 0; i < sizeOfProducts; i++){
+            this->products[i] = products[i];
+        }
         this->profit = profit;
     }
 
@@ -46,6 +49,9 @@ struct Store{
     }
 };
 
+void readStoreToFile(std::ofstream& ofs, Store& store){
+
+}
 
 
 
