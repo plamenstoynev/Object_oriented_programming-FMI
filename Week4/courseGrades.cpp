@@ -98,6 +98,8 @@ int main(){
     std::cout << course2.name << std::endl;
     std::cout << course2.avgGrade() << std::endl;
 
+    course1.free();
+    course2.free();
 
     return 0;
 }
