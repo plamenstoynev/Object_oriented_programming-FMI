@@ -17,14 +17,13 @@ struct Product{
         this->price = price;
     }
 
-    void print(){
-        size_t sizeOfName = strlen(this->name);
-        std::cout << "Name: ";
-        for(size_t i = 0; i < sizeOfName; i++)
-            std::cout << this->name[i];
-        std::cout << std::endl;
+    void increaseQuantity(unsigned quantity) {
+        this->quantity += quantity;
+    }
 
+    void print(){
         std::cout << "Barcode: " << this->barcode << std::endl;
+        std::cout << "Name: " << this->name << std::endl;
         std::cout << "Quantity: " << this->quantity << std::endl;
         std::cout << "Price: " << this->price << std::endl;
     }
@@ -41,6 +40,7 @@ struct Product{
 struct Store{
     char name[30];
     char address[50];
+    size_t sizeOfProducts;
     Product* products;
     double profit;
 
@@ -48,11 +48,82 @@ struct Store{
     Store(const char* name, const char* address, Product* products, double profit, size_t sizeOfProducts){
         strcpy(this->name, name);
         strcpy(this->address, address);
+        this->sizeOfProducts = sizeOfProducts;
         this->products = new Product[sizeOfProducts];
         for(size_t i = 0; i < sizeOfProducts; i++){
             this->products[i] = products[i];
         }
         this->profit = profit;
+    }
+
+    bool isAvailable(unsigned barcode){
+        size_t temp = -1;
+        for(size_t i = 0; i < this->sizeOfProducts; i++){
+            if(this->products[i].barcode == barcode) {
+                temp = i;
+                break;
+            }
+        }
+        if(temp == -1)
+            return false;
+
+        return this->products[temp].quantity > 0;
+    }
+
+
+    void increaseQuantityOfProduct(unsigned barcode, unsigned quantity){
+        size_t temp = 0;
+        for(size_t i = 0; i <sizeOfProducts; i++){
+            if(this->products[i].barcode == barcode) {
+                temp = i;
+                break;
+            }
+        }
+        this->products[temp].increaseQuantity(quantity);
+    }
+
+    void addProduct(const Product& product){
+        size_t newSize = this->sizeOfProducts + 1;
+        Product temp = product;
+        Product* tempArr = new Product[newSize];
+        for(size_t i = 0; i < this->sizeOfProducts; i ++){
+            tempArr[i] = this->products[i];
+        }
+        tempArr[this->sizeOfProducts] = temp;
+        this->sizeOfProducts = newSize;
+
+        delete[] this->products;
+        this->products = tempArr;
+    }
+
+    void sellProduct(unsigned barcode, unsigned quantity){
+        if(!isAvailable(barcode))
+            std::cout << "Product is not available" << std::endl;
+        else{
+            size_t temp = 0;
+            for(size_t i = 0; i <this->sizeOfProducts; i++){
+                if(this->products[i].barcode == barcode) {
+                    temp = i;
+                    break;
+                }
+            }
+            if(this->products[temp].quantity - quantity > 0) {
+                this->products[temp].quantity -= quantity;
+                std::cout << "You buy: " << quantity << " " << this->products[temp].name << std::endl;
+            }
+            else
+                std::cout << "The store doesn't have quantity you want" << std::endl;
+        }
+    }
+
+    void print() {
+        std::cout << "Name: " << this->name << std::endl;
+        std::cout << "Address: " << this->address << std::endl;
+        std::cout << "Profit: " << this->profit << std::endl;
+        std::cout << "Products: " << std::endl;
+        for (size_t i = 0; i < this->sizeOfProducts; i++)
+            this->products[i].print();
+
     }
 
     void free(){
@@ -101,8 +172,34 @@ void initStore(Store& store){
 
 
 int main(){
-    Store store;
-    initStore(store);
-    std::cout << store.name;
+    Product* products = new Product[4];
+    Product p1(1, "Milk", 10, 2.5);
+    Product p2(2, "Bread", 20, 1.5);
+    Product p3(3, "Cheese", 5, 3.5);
+    Product p4(4, "Yogurt", 15, 1.2);
+    Product p5(5, "Chocolate", 30, 2.0);
+    products[0] = p1;
+    products[1] = p2;
+    products[2] = p3;
+    products[3] = p4;
+
+    Store store("Kaufland", "Sofia", products, 1000, 4);
+
+    store.print();
+    std::cout << "-------------------" << std::endl;
+    std::cout << "Buy 5 milks" << std::endl;
+    store.sellProduct(1, 5);
+
+    std::cout << "-------------------" << std::endl;
+    std::cout << "Increase quantity of milk" << std::endl;
+    store.increaseQuantityOfProduct(1, 4);
+
+    std::cout << "-------------------" << std::endl;
+    std::cout << "Add new product" << std::endl;
+    store.addProduct(p5);
+    store.print();
+
+
+    store.free();
     return 0;
 }
