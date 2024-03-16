@@ -17,6 +17,18 @@ struct Product{
         this->price = price;
     }
 
+    void print(){
+        size_t sizeOfName = strlen(this->name);
+        std::cout << "Name: ";
+        for(size_t i = 0; i < sizeOfName; i++)
+            std::cout << this->name[i];
+        std::cout << std::endl;
+
+        std::cout << "Barcode: " << this->barcode << std::endl;
+        std::cout << "Quantity: " << this->quantity << std::endl;
+        std::cout << "Price: " << this->price << std::endl;
+    }
+
     void free(){
         barcode = 0;
         delete[] name;
@@ -36,6 +48,7 @@ struct Store{
     Store(const char* name, const char* address, Product* products, double profit, size_t sizeOfProducts){
         strcpy(this->name, name);
         strcpy(this->address, address);
+        this->products = new Product[sizeOfProducts];
         for(size_t i = 0; i < sizeOfProducts; i++){
             this->products[i] = products[i];
         }
@@ -49,13 +62,47 @@ struct Store{
     }
 };
 
-void readStoreToFile(std::ofstream& ofs, Store& store){
+void initProduct(Product& product){
+    size_t size;
+    std::cin >> size;
 
+    char* name = new char[size];
+    std::cin.ignore();
+    std::cin.getline(name,'\n');
+
+    unsigned barcode, quantity;
+    std::cin >> barcode >> quantity;
+
+    double price;
+    std::cin >> price;
+
+    product = Product(barcode, name, quantity, price);
+}
+
+void initStore(Store& store){
+    char name[30];
+    std::cin.getline(name,30);
+
+    char address[50];
+    std::cin.getline(address, 50);
+
+    size_t sizeOfProducts;
+    std::cin >> sizeOfProducts;
+
+    Product* products = new Product[sizeOfProducts];
+    for(size_t i = 0; i < sizeOfProducts; i++)
+        initProduct(products[i]);
+
+    double profit;
+    std::cin >> profit;
+
+    store = Store(name, address, products, profit, sizeOfProducts);
 }
 
 
-
-
 int main(){
-
+    Store store;
+    initStore(store);
+    std::cout << store.name;
+    return 0;
 }
