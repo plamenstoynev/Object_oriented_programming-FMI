@@ -11,7 +11,7 @@ struct Product{
     Product() = default;
     Product(unsigned barcode, const char* name, unsigned quantity, double price){
         this->barcode = barcode;
-        this->name = new char[strlen(name)];
+        this->name = new char[strlen(name) + 1];
         strcpy(this->name, name);
         this->quantity = quantity;
         this->price = price;
@@ -41,7 +41,7 @@ struct Store{
     char name[30];
     char address[50];
     size_t sizeOfProducts;
-    Product* products;
+    Product products[100];
     double profit;
 
     Store() = default;
@@ -49,69 +49,53 @@ struct Store{
         strcpy(this->name, name);
         strcpy(this->address, address);
         this->sizeOfProducts = sizeOfProducts;
-        this->products = new Product[sizeOfProducts];
         for(size_t i = 0; i < sizeOfProducts; i++){
             this->products[i] = products[i];
         }
         this->profit = profit;
     }
 
-    bool isAvailable(unsigned barcode){
-        size_t temp = -1;
+    size_t searchProductByBarcode(unsigned barcode){
         for(size_t i = 0; i < this->sizeOfProducts; i++){
             if(this->products[i].barcode == barcode) {
-                temp = i;
-                break;
+                return i;
             }
         }
+        return -1;
+    }
+
+    bool isAvailable(unsigned barcode){
+        size_t temp = searchProductByBarcode(barcode);
         if(temp == -1)
             return false;
 
-        return this->products[temp].quantity > 0;
+        return this->products[temp].quantity >= 0;
     }
 
-
     void increaseQuantityOfProduct(unsigned barcode, unsigned quantity){
-        size_t temp = 0;
-        for(size_t i = 0; i <sizeOfProducts; i++){
-            if(this->products[i].barcode == barcode) {
-                temp = i;
-                break;
-            }
-        }
-        this->products[temp].increaseQuantity(quantity);
+        size_t temp = searchProductByBarcode(barcode);
+        if(temp == -1)
+            std::cout << "Product is not available" << std::endl;
+        else
+            this->products[temp].increaseQuantity(quantity);
     }
 
     void addProduct(const Product& product){
-        size_t newSize = this->sizeOfProducts + 1;
-        Product temp = product;
-        Product* tempArr = new Product[newSize];
-        for(size_t i = 0; i < this->sizeOfProducts; i ++){
-            tempArr[i] = this->products[i];
-        }
-        tempArr[this->sizeOfProducts] = temp;
-        this->sizeOfProducts = newSize;
-
-        delete[] this->products;
-        this->products = tempArr;
+        this->products[this->sizeOfProducts] = product;
+        this->sizeOfProducts++;
     }
 
-    void sellProduct(unsigned barcode, unsigned quantity){
-        if(!isAvailable(barcode))
+    void sellProduct(unsigned barcode, unsigned quantity) {
+        if (!isAvailable(barcode))
             std::cout << "Product is not available" << std::endl;
-        else{
-            size_t temp = 0;
-            for(size_t i = 0; i <this->sizeOfProducts; i++){
-                if(this->products[i].barcode == barcode) {
-                    temp = i;
-                    break;
-                }
-            }
-            if(this->products[temp].quantity - quantity > 0) {
+        else {
+            size_t temp = searchProductByBarcode(barcode);
+
+            if (this->products[temp].quantity - quantity > 0) {
                 this->products[temp].quantity -= quantity;
+                this->profit += this->products[temp].price * quantity;
                 std::cout << "You buy: " << quantity << " " << this->products[temp].name << std::endl;
-            }
-            else
+            } else
                 std::cout << "The store doesn't have quantity you want" << std::endl;
         }
     }
@@ -127,18 +111,16 @@ struct Store{
     }
 
     void free(){
-        delete[] products;
-        products = nullptr;
+        for(size_t i = 0;i < this->sizeOfProducts;i++)
+            this->products[i].free();
+        sizeOfProducts = 0;
         profit = 0;
     }
 };
 
 void initProduct(Product& product){
-    size_t size;
-    std::cin >> size;
-
+    size_t size = 1000;
     char* name = new char[size];
-    std::cin.ignore();
     std::cin.getline(name,'\n');
 
     unsigned barcode, quantity;
