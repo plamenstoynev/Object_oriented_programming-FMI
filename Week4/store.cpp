@@ -21,7 +21,7 @@ struct Product{
         this->quantity += quantity;
     }
 
-    void print(){
+    void print() const {
         std::cout << "Barcode: " << this->barcode << std::endl;
         std::cout << "Name: " << this->name << std::endl;
         std::cout << "Quantity: " << this->quantity << std::endl;
@@ -55,7 +55,7 @@ struct Store{
         this->profit = profit;
     }
 
-    size_t searchProductByBarcode(unsigned barcode){
+    size_t searchProductByBarcode(unsigned barcode) const {
         for(size_t i = 0; i < this->sizeOfProducts; i++){
             if(this->products[i].barcode == barcode) {
                 return i;
@@ -64,7 +64,7 @@ struct Store{
         return -1;
     }
 
-    bool isAvailable(unsigned barcode){
+    bool isAvailable(unsigned barcode) const {
         size_t temp = searchProductByBarcode(barcode);
         if(temp == -1)
             return false;
@@ -100,7 +100,7 @@ struct Store{
         }
     }
 
-    void print() {
+    void print() const {
         std::cout << "Name: " << this->name << std::endl;
         std::cout << "Address: " << this->address << std::endl;
         std::cout << "Profit: " << this->profit << std::endl;
