@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <cstring>
 
 struct Product{
@@ -17,8 +16,8 @@ struct Product{
         this->price = price;
     }
 
-    void increaseQuantity(unsigned quantity) {
-        this->quantity += quantity;
+    void increaseQuantity(unsigned quantityIncrease) {
+        this->quantity += quantityIncrease;
     }
 
     void print() const {
@@ -42,10 +41,19 @@ struct Store{
     char address[50];
     size_t sizeOfProducts;
     Product products[100];
-    double profit;
+    double profit = 0;
 
     Store() = default;
-    Store(const char* name, const char* address, Product* products, double profit, size_t sizeOfProducts){
+    Store(const char* name, const char* address, Product* products, size_t sizeOfProducts){
+        strcpy(this->name, name);
+        strcpy(this->address, address);
+        this->sizeOfProducts = sizeOfProducts;
+        for(size_t i = 0; i < sizeOfProducts; i++){
+            this->products[i] = products[i];
+        }
+    }
+
+    Store(const char* name, const char* address, Product* products, size_t sizeOfProducts, double profit){
         strcpy(this->name, name);
         strcpy(this->address, address);
         this->sizeOfProducts = sizeOfProducts;
@@ -149,7 +157,7 @@ void initStore(Store& store){
     double profit;
     std::cin >> profit;
 
-    store = Store(name, address, products, profit, sizeOfProducts);
+    store = Store(name, address, products, sizeOfProducts);
 }
 
 
@@ -165,7 +173,7 @@ int main(){
     products[2] = p3;
     products[3] = p4;
 
-    Store store("Kaufland", "Sofia", products, 1000, 4);
+    Store store("Kaufland", "Sofia", products, 4);
 
     store.print();
     std::cout << "-------------------" << std::endl;
