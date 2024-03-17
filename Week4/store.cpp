@@ -34,6 +34,10 @@ struct Product{
         quantity = 0;
         price = 0;
     }
+
+    ~Product(){
+        free();
+    }
 };
 
 struct Store{
@@ -123,6 +127,10 @@ struct Store{
             this->products[i].free();
         sizeOfProducts = 0;
         profit = 0;
+    }
+
+    ~Store(){
+        free();
     }
 };
 
