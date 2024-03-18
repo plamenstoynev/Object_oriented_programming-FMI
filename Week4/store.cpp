@@ -36,7 +36,7 @@ struct Product{
     }
 
     ~Product(){
-        free();
+          free();
     }
 };
 
@@ -93,8 +93,13 @@ struct Store{
     }
 
     void addProduct(const Product& product){
-        this->products[this->sizeOfProducts] = product;
-        this->sizeOfProducts++;
+        if(!isAvailable(product.barcode)) {
+            this->products[this->sizeOfProducts] = product;
+            this->sizeOfProducts++;
+        }
+        else {
+            std::cout << "Product is already available" << std::endl;
+        }
     }
 
     void sellProduct(unsigned barcode, unsigned quantity) {
@@ -124,8 +129,7 @@ struct Store{
 };
 
 void initProduct(Product& product){
-    size_t size = 1000;
-    char* name = new char[size];
+    char name[1000];
     std::cin.getline(name,'\n');
 
     unsigned barcode, quantity;
