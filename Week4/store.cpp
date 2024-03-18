@@ -121,17 +121,6 @@ struct Store{
             this->products[i].print();
 
     }
-
-    void free(){
-        for(size_t i = 0;i < this->sizeOfProducts;i++)
-            this->products[i].free();
-        sizeOfProducts = 0;
-        profit = 0;
-    }
-
-    ~Store(){
-        free();
-    }
 };
 
 void initProduct(Product& product){
@@ -197,7 +186,5 @@ int main(){
     store.addProduct(p5);
     store.print();
 
-
-    store.free();
     return 0;
 }
