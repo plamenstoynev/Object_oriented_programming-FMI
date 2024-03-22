@@ -1,22 +1,11 @@
-#ifndef OOP_PRACT_TECHNIC_H
-#define OOP_PRACT_TECHNIC_H
 #pragma once
+#include "helper.cpp"
 
 const unsigned MAX_NAME_LENGTH = 32;
 const unsigned MAX_ID_LENGTH = 10;
 const unsigned Products = 9;
 
-enum Category{
-    TV,
-    PC,
-    Phone,
-    Fridge,
-    WashingMachine,
-    DishWasher,
-    Microwave,
-    Oven,
-    AirConditioner
-};
+
 
 class Technic {
 private:
@@ -39,6 +28,3 @@ public:
     void setProduct(const char* product);
     void setProducts(bool* Products);
 };
-
-
-#endif //OOP_PRACT_TECHNIC_H

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Technic.h"
-#include "helper.cpp"
 
 Technic::Technic(const char* name, const char* ID, bool* products){
     setName(name);

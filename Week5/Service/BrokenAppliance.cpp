@@ -1,6 +1,5 @@
 #include <iostream>
 #include "BrokenAppliance.h"
-#include "helper.cpp"
 
 BrokenAppliance::BrokenAppliance(const char* product, double price, bool isInWarranty){
     setProduct(product);
