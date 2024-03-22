@@ -1,5 +1,4 @@
 #pragma once
-#include "helper.cpp"
 
 const unsigned MAX_NAME_LENGTH = 32;
 const unsigned MAX_ID_LENGTH = 10;
@@ -27,4 +26,6 @@ public:
     void setID(const char* ID);
     void setProduct(const char* product);
     void setProducts(bool* Products);
+
+    bool canFix(const char* product);
 };
