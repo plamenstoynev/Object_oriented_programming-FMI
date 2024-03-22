@@ -27,3 +27,26 @@ bool isValidID(const char* ID){
 
     return true;
 }
+
+Category getProduct(const char* product){
+    if(strcmp(product,"TV") == 0)
+        return TV;
+    else if(strcmp(product,"PC") == 0)
+        return PC;
+    else if(strcmp(product,"Phone") == 0)
+        return Phone;
+    else if(strcmp(product,"Fridge") == 0)
+        return Fridge;
+    else if(strcmp(product,"WashingMachine") == 0)
+        return WashingMachine;
+    else if(strcmp(product,"DishWasher") == 0)
+        return DishWasher;
+    else if(strcmp(product,"Microwave") == 0)
+        return Microwave;
+    else if(strcmp(product,"Oven") == 0)
+        return Oven;
+    else if(strcmp(product,"AirConditioner") == 0)
+        return AirConditioner;
+    else
+        return TV;
+}

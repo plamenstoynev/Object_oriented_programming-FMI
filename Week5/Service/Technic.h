@@ -38,8 +38,6 @@ public:
     void setID(const char* ID);
     void setProduct(const char* product);
     void setProducts(bool* Products);
-
-    Category getProduct(const char* product);
 };
 
 
