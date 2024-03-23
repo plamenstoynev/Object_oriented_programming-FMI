@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Client.h"
 
-Client::Client(const char* name, const char* product){
+Client::Client(const char* name,const BrokenAppliance& product){
     setName(name);
     setProduct(product);
 }
@@ -10,7 +10,7 @@ const char* Client::getName() const{
     return this->name;
 }
 
-Category Client::getProduct() const{
+BrokenAppliance Client::getProduct() const{
     return this->product;
 }
 
@@ -21,6 +21,6 @@ void Client::setName(const char* name){
         std::cout << "Name is not valid" << std::endl;
 }
 
-void Client::setProduct(const char* product){
-    this->product = ::getProduct(product);
+void Client::setProduct(const BrokenAppliance& product){
+    this->product = product;
 }

@@ -4,8 +4,6 @@ const unsigned MAX_NAME_LENGTH = 32;
 const unsigned MAX_ID_LENGTH = 10;
 const unsigned Products = 9;
 
-
-
 class Technic {
 private:
     char name[MAX_NAME_LENGTH + 1] = "Unknown";
@@ -18,7 +16,7 @@ public:
     Technic(const char* name, const char* ID, bool* products);
 
     const char* getName() const;
-    const char* gatID() const;
+    const char* getID() const;
     const bool* getProducts() const;
     unsigned getCountRepairs() const;
 

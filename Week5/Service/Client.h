@@ -1,18 +1,20 @@
-#include "helper.cpp"
+#pragma once
+#include "BrokenAppliance.h"
+
 const unsigned lengthName = 32;
 
 class Client {
 private:
     char name[lengthName + 1] = "Unknown";
-    Category product = Category::TV;
+    BrokenAppliance product;
 
 public:
     Client() = default;
-    Client(const char* name, const char* product);
+    Client(const char* name, const BrokenAppliance& product);
 
     const char* getName() const;
-    Category getProduct() const;
+    BrokenAppliance getProduct() const;
 
     void setName(const char* name);
-    void setProduct(const char* product);
+    void setProduct(const BrokenAppliance& product);
 };

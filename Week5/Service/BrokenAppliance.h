@@ -1,3 +1,4 @@
+#pragma once
 #include "helper.cpp"
 
 class BrokenAppliance {

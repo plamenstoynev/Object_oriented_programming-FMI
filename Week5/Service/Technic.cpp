@@ -12,7 +12,7 @@ const char* Technic::getName() const{
     return this->name;
 }
 
-const char* Technic::gatID() const{
+const char* Technic::getID() const{
     return this->ID;
 }
 
