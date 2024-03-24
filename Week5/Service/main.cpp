@@ -21,5 +21,7 @@ int main(){
 
     std::cout << technicForClient.getID() << std::endl;
     std::cout << technicForClient2.getID() << std::endl;
+
+    service.removeTechnic("089761235");
     return 0;
 }
