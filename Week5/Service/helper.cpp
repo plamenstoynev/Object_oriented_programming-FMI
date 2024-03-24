@@ -1,16 +1,5 @@
 #include <cstring>
-
-enum Category{
-    TV,
-    PC,
-    Phone,
-    Fridge,
-    WashingMachine,
-    DishWasher,
-    Microwave,
-    Oven,
-    AirConditioner
-};
+#include "Category.h"
 
 bool isFirstUpperLetter(const char* name){
     return  'A' <= name[0] && name[0] <= 'Z';

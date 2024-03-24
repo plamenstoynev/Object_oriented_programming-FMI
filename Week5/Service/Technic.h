@@ -1,9 +1,13 @@
 #pragma once
-#include "helper.cpp"
+#include <cstring>
+#include "Category.h"
+#include "helper.h"
 
 const unsigned MAX_NAME_LENGTH = 32;
 const unsigned MAX_ID_LENGTH = 10;
 const unsigned Products = 9;
+
+
 
 class Technic {
 private:
@@ -26,5 +30,5 @@ public:
     void setProduct(const char* product);
     void setProducts(bool* Products);
 
-    bool canFix(Category product);
+    bool canRepair(Category product) const;
 };

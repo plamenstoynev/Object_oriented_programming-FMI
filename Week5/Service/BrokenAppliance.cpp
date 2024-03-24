@@ -1,7 +1,7 @@
 #include <iostream>
 #include "BrokenAppliance.h"
 
-BrokenAppliance::BrokenAppliance(const char* product, double price, bool isInWarranty){
+BrokenAppliance::BrokenAppliance(Category product, double price, bool isInWarranty){
     setProduct(product);
     setPrice(price);
     setWarranty(isInWarranty);
@@ -9,19 +9,19 @@ BrokenAppliance::BrokenAppliance(const char* product, double price, bool isInWar
 
 
 Category BrokenAppliance::getProduct() const{
-    return product;
+    return this->product;
 }
 
 double BrokenAppliance::getPrice() const{
-    return price;
+    return this->price;
 }
 
 bool BrokenAppliance::getWarranty() const{
-    return isInWarranty;
+    return this->isInWarranty;
 }
 
-void BrokenAppliance::setProduct(const char* product){
-     this->product = ::getProduct(product);
+void BrokenAppliance::setProduct(Category product){
+     this->product = product;
 }
 
 void BrokenAppliance::setPrice(double price){

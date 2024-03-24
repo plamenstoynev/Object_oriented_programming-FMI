@@ -1,5 +1,7 @@
 #pragma once
+#include <cstring>
 #include "BrokenAppliance.h"
+#include "helper.h"
 
 const unsigned lengthName = 32;
 

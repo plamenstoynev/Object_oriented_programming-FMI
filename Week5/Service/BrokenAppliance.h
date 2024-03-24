@@ -1,5 +1,5 @@
 #pragma once
-#include "helper.cpp"
+#include "Category.h"
 
 class BrokenAppliance {
 private:
@@ -9,13 +9,13 @@ private:
 
 public:
     BrokenAppliance() = default;
-    BrokenAppliance(const char* product, double price, bool isInWarranty);
+    BrokenAppliance(Category product, double price, bool isInWarranty);
 
     Category getProduct() const;
     double getPrice() const;
     bool getWarranty() const;
 
-    void setProduct(const char* product);
+    void setProduct(Category product);
     void setPrice(double price);
     void setWarranty(bool warranty);
 };

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Technic.h"
-
 Technic::Technic(const char* name, const char* ID, bool* products){
     setName(name);
     setID(ID);
@@ -49,7 +48,7 @@ void Technic::setProducts(bool* Products){
         this->productsCanRepair[i] = Products[i];
 }
 
-bool Technic::canFix(Category product) {
+bool Technic::canRepair(Category product) const {
     return this->productsCanRepair[product];
 }
 
