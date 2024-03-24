@@ -13,7 +13,7 @@ Technic Service::technicForTheClient(const Client& client){
     const size_t sizeOfArr = 9;
     bool arrHelper[sizeOfArr];
     for(size_t i = 0; i < 30; i++){
-        if(this->technics[i].getProducts()[client.getProduct().getProduct()] == true)
+        if(this->technics[i].canFix(client.getProduct().getProduct()))
             return this->technics[i];
     }
     std::cout << "There is not this technic!" << std::endl;
