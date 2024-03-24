@@ -31,4 +31,5 @@ public:
     void setProducts(bool* Products);
 
     bool canRepair(Category product) const;
+    void plusProfit(double profit);
 };

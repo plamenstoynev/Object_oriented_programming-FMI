@@ -52,3 +52,6 @@ bool Technic::canRepair(Category product) const {
     return this->productsCanRepair[product];
 }
 
+void Technic::plusProfit(double profit) {
+    this->profit += profit;
+}

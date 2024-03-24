@@ -12,7 +12,14 @@ int main(){
     service.addTechnic(technic);
     Technic technicForClient = service.technicForTheClient(client);
 
-    std::cout << technicForClient.getID() << std::endl;
+    BrokenAppliance brokenAppliance2(Category::PC, 2000, false);
+    Client client2("Petar", brokenAppliance2);
+    Technic technic2("Georgi", "089761235", productsCanFix);
+    service.addTechnic(technic2);
+    Technic technicForClient2 = service.technicForTheClient(client2);
 
+
+    std::cout << technicForClient.getID() << std::endl;
+    std::cout << technicForClient2.getID() << std::endl;
     return 0;
 }
