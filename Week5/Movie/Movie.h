@@ -24,7 +24,8 @@ public:
     void setGenre(uint8_t genre);
 
 
-    bool checkGenre(Genre genre);
+    bool checkGenre(Genre genre) const;
     void addGenre(Genre genre);
     void removeGenre(Genre genre);
+    void printGenres() const;
 };

@@ -15,8 +15,7 @@ enum Genre : uint8_t{
     END = 1 << 7
 };
 
-bool isValidName(const char* name);
-bool isValidID(const char* ID);
-Genre getProduct(const char* product);
-bool isFirstUpperLetter(const char* name);
-bool isLowerCaseOthers(const char* name);
+void getGenre(Genre genre);
+Genre iterateGenre(Genre genre);
+Genre startGenre();
+Genre endGenre();

@@ -20,10 +20,7 @@ Time Movie::getTime() const{
 }
 
 void Movie::setName(const char* name){
-    if(isValidName(name))
-        strcpy(this->name, name);
-    else
-        std::cout << "The name is not valid" << std::endl;
+    strcpy(this->name, name);
 }
 
 void Movie::setProducer(const char* Producer){
@@ -38,7 +35,7 @@ void Movie::setGenre(uint8_t genre) {
     this->genre = genre;
 }
 
-bool Movie::checkGenre(Genre genre){
+bool Movie::checkGenre(Genre genre) const{
     return(this->genre & genre) != 0;
 }
 
@@ -48,4 +45,13 @@ void Movie::addGenre(Genre genre){
 
 void Movie::removeGenre(Genre genre){
     this->genre &= ~genre;
+}
+
+void Movie::printGenres() const {
+    for(unsigned i = startGenre(); i < endGenre(); i = iterateGenre((Genre)i)) {
+        if (checkGenre((Genre) i)) {
+            getGenre((Genre) i);
+            std::cout << "/";
+        }
+    }
 }
