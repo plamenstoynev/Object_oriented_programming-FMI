@@ -4,8 +4,8 @@
 
 constexpr unsigned MAX_NUMS = 1023;
 constexpr unsigned MAX_NUMS_COUNT = MAX_NUMS + 1;
-constexpr unsigned BUCKET_SIZE = sizeof(uint8_t);
-constexpr unsigned BUCKET_COUNT = MAX_NUMS / BUCKET_SIZE;
+constexpr unsigned BUCKET_SIZE = sizeof(uint8_t) * 8;
+constexpr unsigned BUCKET_COUNT = (MAX_NUMS / BUCKET_SIZE) + 1;
 
 class BitSet {
 private:
@@ -17,6 +17,6 @@ public:
     bool contains(unsigned num) const;
     void print() const;
 
-    friend BitSet& combine(const BitSet& lhs, const BitSet& rhs);
-    friend BitSet& cross(const BitSet& lhs, const BitSet& rhs);
+    friend BitSet combine(const BitSet& lhs, const BitSet& rhs);
+    friend BitSet cross(const BitSet& lhs, const BitSet& rhs);
 };

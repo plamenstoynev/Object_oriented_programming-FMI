@@ -33,17 +33,17 @@ void BitSet::print() const{
     std::cout << "}" << std::endl;
 }
 
-BitSet& combine(const BitSet& lhs, const BitSet& rhs){
-    BitSet result;
-    for(unsigned i = 0; i < MAX_NUMS_COUNT; i++)
+BitSet combine(const BitSet& lhs, const BitSet& rhs){
+    BitSet result{};
+    for(unsigned i = 0; i < BUCKET_COUNT; i++)
         result.buckets[i] = lhs.buckets[i]  | rhs.buckets[i];
 
     return result;
 }
 
-BitSet& cross(const BitSet& lhs, const BitSet& rhs){
-    BitSet result;
-    for(unsigned i = 0; i < MAX_NUMS_COUNT; i++)
+BitSet cross(const BitSet& lhs, const BitSet& rhs){
+    BitSet result{};
+    for(unsigned i = 0; i < BUCKET_COUNT; i++)
         result.buckets[i] = lhs.buckets[i]  & rhs.buckets[i];
 
     return result;
