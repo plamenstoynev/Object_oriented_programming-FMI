@@ -45,7 +45,7 @@ void ShoppingCart::setProductsSize(unsigned productsSize){
 
 bool ShoppingCart::checkProduct(const Product &product) const {
     for(unsigned i = 0; i < this->productsCount; i++)
-        if(strcmp(this->products[i].getName(), product.getName()))
+        if(strcmp(this->products[i].getName(), product.getName()) == 0)
             return true;
 
     return false;
@@ -68,11 +68,12 @@ void ShoppingCart::removeProduct(const Product& product){
     Product temp{};
     if(checkProduct(product)){
         for(unsigned i = 0; i < this->productsCount; i++)
-            if(this->products[i].getName(), product.getName()) {
+            if(strcmp(this->products[i].getName(), product.getName()) == 0) {
                 temp = this->products[i];
-                this->products[i] = this->products[this->productsCount];
-                this->products[this->productsCount] = temp;
+                this->products[i] = this->products[this->productsCount - 1];
+                this->products[this->productsCount - 1] = temp;
                 this->productsCount--;
+                break;
             }
     }
     else

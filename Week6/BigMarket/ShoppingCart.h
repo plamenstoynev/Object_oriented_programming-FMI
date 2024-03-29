@@ -25,6 +25,10 @@ public:
     bool isEmpty() const;
     double priceOfProducts() const;
 
+    void sortByName();
+    void sortByPrice();
+    void sortByQuantity();
+
 
     ~ShoppingCart();
 

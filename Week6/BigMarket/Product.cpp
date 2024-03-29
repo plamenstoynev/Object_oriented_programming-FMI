@@ -12,8 +12,8 @@ Product::Product(const Product& other){
 
 Product& Product::operator=(const Product& other){
     if(this != &other){
-        copyFrom(other);
         free();
+        copyFrom(other);
     }
     return *this;
 }
@@ -63,8 +63,8 @@ void Product::copyFrom(const Product &other) {
     this->name = new char[lengthName + 1];
     strcpy(this->name, other.name);
 
-    this->price = price;
-    this->quantity = quantity;
+    this->price = other.price;
+    this->quantity = other.quantity;
 }
 
 void Product::free() {
