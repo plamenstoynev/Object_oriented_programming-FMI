@@ -31,7 +31,7 @@ unsigned Product::getQuantity() const{
 }
 
 void Product::setName(const char* name){
-    if(this->name != name || !name){
+    if(this->name != name || name){
         unsigned lengthName = strlen(name);
         this->name = new char[lengthName + 1];
         strcpy(this->name, name);

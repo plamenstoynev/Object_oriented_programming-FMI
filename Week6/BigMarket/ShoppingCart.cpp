@@ -93,6 +93,36 @@ double ShoppingCart::priceOfProducts() const{
     return result;
 }
 
+void ShoppingCart::sortByName() {
+    Product temp{};
+    for(unsigned i = 0; i < this->productsCount - 1; i++)
+        for(unsigned j = 0; j < this->productsCount - i - 1; j++)
+            if(strcmp(this->products[j].getName(), this->products[j + 1].getName()) > 0){
+                this->products[j] = this->products[j + 1];
+                this->products[j] = temp;
+            }
+}
+
+void ShoppingCart::sortByPrice() {
+    Product temp{};
+    for(unsigned i = 0; i < this->productsCount - 1; i++)
+        for(unsigned j = 0; j < this->productsCount - i - 1; j++)
+            if(this->products[j].getPrice() > this->products[j + 1].getPrice()){
+                this->products[j] = this->products[j + 1];
+                this->products[j + 1] = temp;
+            }
+}
+
+void ShoppingCart::sortByQuantity() {
+    Product temp{};
+    for(unsigned i = 0; i < this->productsCount - 1; i++)
+        for(unsigned j = 0; j < this->productsCount - i - 1; j++)
+            if(this->products[i].getQuantity() > this->products[j].getQuantity()){
+                this->products[i] = this->products[j];
+                this->products[j] = temp;
+            }
+}
+
 ShoppingCart::~ShoppingCart(){
     free();
 }

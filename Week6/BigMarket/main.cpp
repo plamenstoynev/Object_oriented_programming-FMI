@@ -49,4 +49,29 @@ void readProductsFromTxtFile(const char* FILE_NAME, Product*& products, unsigned
 }
 
 int main(){
+    Product products[3] = {
+            Product("Milk", 1.5, 10),
+            Product("Bread", 1, 20),
+            Product("Cheese", 2, 5)
+    };
+
+    writeProductsInTxtFile(FILE_NAME, products, 3);
+
+    Product* productsFromFile = nullptr;
+    unsigned productsCount = 0;
+
+    readProductsFromTxtFile(FILE_NAME, productsFromFile, productsCount);
+
+    ShoppingCart cart (products, 3, 3);
+
+    std::cout << "Price of products: " << cart.priceOfProducts() << std::endl;
+
+    //print products
+    for(unsigned i = 0; i < cart.getProductsCount(); i++)
+        std::cout << cart.getProducts()[i].getName() << " " << cart.getProducts()[i].getPrice() << " " << cart.getProducts()[i].getQuantity() << std::endl;
+    writeProductsInTxtFile(FILE_NAME, cart.getProducts(), cart.getProductsCount());
+
+    delete[] productsFromFile;
+
+    return 0;
 }
