@@ -4,6 +4,7 @@ ShoppingCart::ShoppingCart(const Product* products, unsigned productsSize, unsig
     this->productsCount = productsCount;
     setProductsSize(productsSize);
     setProducts(products);
+    this->productsCount = productsCount;
 }
 
 ShoppingCart::ShoppingCart(const ShoppingCart& other){
@@ -53,13 +54,9 @@ bool ShoppingCart::checkProduct(const Product &product) const {
 
 void ShoppingCart::addProduct(const Product& product){
     if(this->productsCount != this->productsSize){
-        if(checkProduct(product))
-            return;
-        else{
             this->products[this->productsCount] = product;
             this->productsCount++;
         }
-    }
     else
         return;
 }
