@@ -1,14 +1,21 @@
-//
-// Created by plame on 4/4/2024.
-//
-
-#ifndef OOP_PRACT_SOFTWAREENGINEER_H
-#define OOP_PRACT_SOFTWAREENGINEER_H
-
+#pragma once
 
 class SoftwareEngineer {
+private:
+    char* name = nullptr;
+    double salary = 0;
 
+public:
+    SoftwareEngineer() = default;
+    SoftwareEngineer(const char* name, double salary);
+    SoftwareEngineer(const SoftwareEngineer& other);
+    SoftwareEngineer& operator=(const SoftwareEngineer& other);
+
+    const char* getName();
+    double getSalary();
+
+    void setName(const char* name);
+    void setSalary(double salary);
+
+    ~SoftwareEngineer();
 };
-
-
-#endif //OOP_PRACT_SOFTWAREENGINEER_H
