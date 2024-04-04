@@ -27,8 +27,8 @@ unsigned SoftwareEngineer::getSalary() {
 
 void SoftwareEngineer::setName(const char *name) {
     if(!name || name != this->name){
-        unsigned lengthName = stelen(name);
-        this->name = new char[lengthName];
+        unsigned lengthName = strlen(name);
+        this->name = new char[lengthName + 1];
         strcpy(this->name, name);
     }
     else
@@ -48,15 +48,15 @@ SoftwareEngineer::~SoftwareEngineer() {
 
 void SoftwareEngineer::copyFrom(const SoftwareEngineer &other) {
     unsigned lengthName = strlen(other.name);
-    this->name = new char [lengthName];
+    this->name = new char [lengthName + 1];
     strcpy(this->name, name);
 
-    this->salary = salary;
+    this->salary = other.salary;
 }
 
 void SoftwareEngineer::free() {
-    delete[] name;
-    name = nullptr;
+    delete[] this->name;
+    this->name = nullptr;
 
-    salary = 0;
+    this->salary = 0;
 }
