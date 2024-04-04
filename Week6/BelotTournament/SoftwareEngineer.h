@@ -1,4 +1,5 @@
 #pragma once
+#include <cstring>
 
 class SoftwareEngineer {
 private:
@@ -18,4 +19,8 @@ public:
     void setSalary(double salary);
 
     ~SoftwareEngineer();
+
+private:
+    void copyFrom(const SoftwareEngineer& other);
+    void free();
 };
