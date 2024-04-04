@@ -12,8 +12,8 @@ public:
     SoftwareEngineer(const SoftwareEngineer& other);
     SoftwareEngineer& operator=(const SoftwareEngineer& other);
 
-    const char* getName();
-    unsigned getSalary();
+    const char* getName() const;
+    unsigned getSalary() const;
 
     void setName(const char* name);
     void setSalary(unsigned salary);

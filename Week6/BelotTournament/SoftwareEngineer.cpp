@@ -17,11 +17,11 @@ SoftwareEngineer& SoftwareEngineer::operator=(const SoftwareEngineer &other) {
     return *this;
 }
 
-const char* SoftwareEngineer::getName() {
+const char* SoftwareEngineer::getName()const {
     return this->name;
 }
 
-unsigned SoftwareEngineer::getSalary() {
+unsigned SoftwareEngineer::getSalary() const{
     return this->salary;
 }
 
