@@ -1,6 +1,6 @@
 #include "SoftwareEngineer.h"
 
-SoftwareEngineer::SoftwareEngineer(const char* name, double salary) {
+SoftwareEngineer::SoftwareEngineer(const char* name, unsigned salary) {
     setName(name);
     setSalary(salary);
 }
@@ -21,7 +21,7 @@ const char* SoftwareEngineer::getName() {
     return this->name;
 }
 
-double SoftwareEngineer::getSalary() {
+unsigned SoftwareEngineer::getSalary() {
     return this->salary;
 }
 
@@ -35,7 +35,7 @@ void SoftwareEngineer::setName(const char *name) {
         return;
 }
 
-void SoftwareEngineer::setSalary(double salary) {
+void SoftwareEngineer::setSalary(unsigned salary) {
     if(salary < 0)
         return;
     else
