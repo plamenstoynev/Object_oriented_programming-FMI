@@ -1,3 +1,4 @@
+#include <ostream>
 #include "Product.h"
 
 Product::Product(const char* name, double price, unsigned quantity){
@@ -15,6 +16,16 @@ Product& Product::operator=(const Product& other){
         free();
         copyFrom(other);
     }
+    return *this;
+}
+
+Product& Product::operator++() {
+    this->quantity++;
+    return *this;
+}
+
+Product& Product::operator++(int) {
+    this->quantity++;
     return *this;
 }
 
@@ -73,4 +84,8 @@ void Product::free() {
 
     price = 0;
     quantity = 0;
+}
+
+std::ostream& operator<<(std::ostream& os, const Product& product){
+    return os << "Product:" << product.getName() << " price:" << product.getPrice() << " quantity:" << product.getQuantity();
 }
