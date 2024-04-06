@@ -22,6 +22,8 @@ public:
     void setPrice(double price);
     void setQuantity(unsigned quantity);
 
+    friend std::istream& operator>>(std::istream& is, Product& product);
+
     ~Product();
 private:
     void copyFrom(const Product& other);

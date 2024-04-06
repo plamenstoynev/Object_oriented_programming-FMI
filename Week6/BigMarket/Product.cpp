@@ -1,4 +1,5 @@
 #include <ostream>
+#include <iostream>
 #include "Product.h"
 
 Product::Product(const char* name, double price, unsigned quantity){
@@ -63,6 +64,10 @@ void Product::setQuantity(unsigned quantity){
         this->quantity = quantity;
     else
         return;
+}
+
+std::istream& operator>>(std::istream& is, Product& product){
+    
 }
 
 Product::~Product(){
