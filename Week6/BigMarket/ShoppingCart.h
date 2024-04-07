@@ -11,6 +11,12 @@ public:
     ShoppingCart(const Product* products, unsigned productsSize, unsigned productsCount);
     ShoppingCart(const ShoppingCart& other);
     ShoppingCart& operator=(const ShoppingCart& other);
+    ShoppingCart& operator+=(const Product& product);
+    ShoppingCart& operator-=(const Product& product);
+    Product& operator[](int index) const;
+    Product& operator[](int index);
+
+
 
     Product* getProducts() const;
     unsigned getProductsSize() const;

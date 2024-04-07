@@ -4,7 +4,6 @@ ShoppingCart::ShoppingCart(const Product* products, unsigned productsSize, unsig
     this->productsCount = productsCount;
     setProductsSize(productsSize);
     setProducts(products);
-    this->productsCount = productsCount;
 }
 
 ShoppingCart::ShoppingCart(const ShoppingCart& other){
@@ -17,6 +16,22 @@ ShoppingCart& ShoppingCart::operator=(const ShoppingCart& other){
         copyFrom(other);
     }
     return *this;
+}
+
+ShoppingCart& ShoppingCart::operator+=(const Product& product){
+    this->addProduct(product);
+}
+
+ShoppingCart& ShoppingCart::operator-=(const Product& product){
+    this->removeProduct(product);
+}
+
+Product& ShoppingCart::operator[](int index) const{
+    return this->products[index]
+}
+
+Product& ShoppingCart::operator[](int index){
+    return this->products[index];
 }
 
 Product* ShoppingCart::getProducts() const{
