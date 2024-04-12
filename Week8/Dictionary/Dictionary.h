@@ -18,8 +18,6 @@ public:
 
     MyString operator()(const MyString& word);
 
-    friend void resize(const Dictionary& dictionary);
-
     ~Dictionary();
 private:
     void copyFrom(const Dictionary& other);
@@ -28,3 +26,4 @@ private:
     bool checkWord(const MyString& word);
 };
 Dictionary& operator+(const Dictionary& lhs, const Dictionary& rhs);
+void resize(Dictionary& dictionary);
