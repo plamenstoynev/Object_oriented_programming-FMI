@@ -1,6 +1,6 @@
 #include "MyString.h"
 
-static unsigned roundToPowerOfTwo(unsigned v)
+static unsigned roundToPowerOfTwo(unsigned v)//this function is not made by me
 {
     v--;
     v |= v >> 1;
@@ -12,7 +12,7 @@ static unsigned roundToPowerOfTwo(unsigned v)
     return v;
 }
 
-static unsigned dataToAllocByStringLen(unsigned stringLength)
+static unsigned dataToAllocByStringLen(unsigned stringLength)//this function is not made by me
 {
     return std::max(roundToPowerOfTwo(stringLength + 1), 16u);
 }
