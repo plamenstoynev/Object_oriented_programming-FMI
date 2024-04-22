@@ -29,10 +29,22 @@ MyString::MyString(const MyString& other){
     copyFrom(other);
 }
 
+MyString::MyString(MyString &&other) {
+    moveFrom(std::move(other));
+}
+
 MyString& MyString::operator=(const MyString& other){
     if(this != &other){
         free();
         copyFrom(other);
+    }
+    return *this;
+}
+
+MyString& MyString::operator=(MyString &&other) {
+    if(this != &other){
+        free();
+        moveFrom(std::move(other));
     }
     return *this;
 }
@@ -53,7 +65,7 @@ MyString& MyString::operator+=(const MyString& other){
     if(getSize() + other.getSize() >= getCapacity())
         resize(dataToAllocByStringLen(getSize() + other.getSize()));
 
-    std::strncat(this.str, other.str, other.getSize());
+    std::strncat(this->str, other.str, other.getSize());
     this->size = getSize() + other.getSize();
 
     return *this;
@@ -73,7 +85,7 @@ std::ostream& operator<<(std::ostream& os, const MyString& str){
 
 std::istream& operator>>(std::istream & is, MyString& str){
     char buffer[1024];
-    is >> buff;
+    is >> buffer;
     size_t buffLength = std::strlen(buffer);
 
     if(buffLength > str.size)
@@ -104,6 +116,17 @@ void MyString::copyFrom(const MyString &other) {
 
     this->str = new char[other.size];
     strcpy(this->str, other.str);
+}
+
+void MyString::moveFrom(MyString &&other) {
+    this->str = other.str;
+    other.str = nullptr;
+
+    this->size = other.size;
+    other.size = 0;
+
+    this->capacity = other.capacity;
+    other.capacity = 0;
 }
 
 void MyString::free() {

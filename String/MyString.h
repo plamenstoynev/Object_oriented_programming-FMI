@@ -11,7 +11,9 @@ public:
     MyString() = default;
     MyString(const char* str);
     MyString(const MyString& other);
+    MyString(MyString&& other);
     MyString& operator=(const MyString& other);
+    MyString& operator=(MyString&& other);
 
     size_t getSize() const;
     size_t getCapacity() const;
@@ -32,6 +34,7 @@ private:
     void resize(unsigned newAllocatedDataSize);
 
     void copyFrom(const MyString& other);
+    void moveFrom(MyString&& other);
     void free();
 };
 
