@@ -114,7 +114,7 @@ void MyString::copyFrom(const MyString &other) {
     this->size = other.size;
     this->capacity = other.capacity;
 
-    this->str = new char[other.size];
+    this->str = new char[other.capacity];
     strcpy(this->str, other.str);
 }
 
