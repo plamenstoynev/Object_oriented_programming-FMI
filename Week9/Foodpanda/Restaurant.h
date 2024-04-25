@@ -33,15 +33,15 @@ private:
         this->size = other.size;
         this->products = new MyString *[other.size];
 
-        int helper = 0;
-        while (helper != this->size) {
-            this->products[helper] = other.products[helper];
-            helper++;
+        for(int i = 0; i < other.size; i++){
+            if(other.products[i]->getSize() != -1)
+                this->products[i] = new MyString(*other.products[i]);
         }
     }
     void free(){
         for(int i = 0; i < size; i++){
             delete products[i];
+            this->products[i] = nullptr;
         }
         delete[] products;
         this->size = 0;

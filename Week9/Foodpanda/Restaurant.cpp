@@ -15,7 +15,7 @@ MyString Restaurant::getProducts(unsigned index) const{
 }
 
 void Restaurant::setName(const MyString& name){
-    this.name = name;
+    this->name = name;
 }
 void Restaurant::setProducts(const Product& products){
     this->products = products;

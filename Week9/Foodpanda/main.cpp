@@ -1,12 +1,8 @@
 #include <iostream>
 #include "Restaurant.h"
+#include "Foodpanda.h"
+#include "Order.h"
 int main(){
-    MyString* products[3];
-    products[0] = new MyString("Pizza");
-    products[1] = new MyString("Pasta");
-    Product product(products, 3);
-    std::cout << *product.products[0] << std::endl;
-
-    product.products[2] = new MyString("Milk");
+    //there is a problem in void free() in Product struct
     return 0;
 }
