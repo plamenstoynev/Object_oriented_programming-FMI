@@ -50,7 +50,7 @@ MyString& MyString::operator=(MyString &&other) {
 }
 
 size_t MyString::getSize() const{
-    return this->size - 1;
+    return this-> size - 1;
 }
 
 size_t MyString::getCapacity() const{
