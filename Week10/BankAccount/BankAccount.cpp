@@ -27,7 +27,7 @@ void BankAccount::deposit(double amount){
 }
 void BankAccount::withdraw(double amount){
     if(this->balance - amount < 0)
-        throw std::invalid_argument("Can't withdraw");
+        throw  std::invalid_argument("Can't withdraw");
 
     this->balance -+amount;
 }
