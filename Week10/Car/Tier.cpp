@@ -31,3 +31,7 @@ void Tier::setDiameter(int diameter){
         throw std::invalid_argument("Diameter must be between 13 and 21");
     this->diameter = diameter;
 }
+
+std::ostream& operator<<(std::iostream& os, const Tier& tier){
+    return operator<<(os, tier) << " - " << tier.getWidth() << "/" << tier.getProfile() << "R" << tier.getDiameter();
+}

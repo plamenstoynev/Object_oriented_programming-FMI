@@ -25,3 +25,7 @@ void CarPart::setName(const MyString& name){
 void CarPart::setDescription(const MyString& description){
     this->description = description;
 }
+
+std::ostream& operator<<(std::ostream& os, const CarPart& carPart){
+    return os << carPart.getID() << " by " << carPart.getName() << " - " << carPart.getDescription();
+}

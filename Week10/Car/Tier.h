@@ -16,3 +16,5 @@ public:
     void setProfile(int profile);
     void setDiameter(int diameter);
 };
+
+std::ostream& operator<<(std::iostream& os, const Tier& tier);

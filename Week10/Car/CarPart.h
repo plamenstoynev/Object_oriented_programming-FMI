@@ -16,3 +16,5 @@ public:
     void setName(const MyString& name);
     void setDescription(const MyString& description);
 };
+
+std::ostream& operator<<(std::ostream& os, const CarPart& carPart);
