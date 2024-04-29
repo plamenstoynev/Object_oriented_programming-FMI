@@ -1,14 +1,18 @@
-//
-// Created by plame on 4/26/2024.
-//
-
-#ifndef OOP_PRACT_CARPART_H
-#define OOP_PRACT_CARPART_H
-
-
+#include "../../String/MyString.h"
 class CarPart {
+private:
+    unsigned ID;
+    MyString nameManufacture;
+    MyString description;
+public:
+    CarPart() = default;
+    CarPart(unsigned ID, const MyString& nameManufacture, const MyString& description);
 
+    unsigned getID() const;
+    MyString getName() const;
+    MyString getDescription() const;
+
+    void setID(unsigned ID);
+    void setName(const MyString& name);
+    void setDescription(const MyString& description);
 };
-
-
-#endif //OOP_PRACT_CARPART_H
