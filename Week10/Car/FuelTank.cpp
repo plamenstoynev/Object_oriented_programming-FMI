@@ -13,7 +13,7 @@ double FuelTank::getCapacity() const{
 }
 
 void FuelTank::use(double usingFuel){
-    if(this->capacity - usingFuel < 0)
+    if(canUse(usingFuel))
         throw std::invalid_argument("Don't have enough fuel");
 
     this->capacity -= usingFuel;
@@ -23,4 +23,8 @@ void FuelTank::reload(double reload){
 
     if(this->capacity > this->size)
         this->capacity = this->size;
+}
+
+bool FuelTank::canUse(double usingFuel) const {
+    return this->capacity - usingFuel < 0;
 }

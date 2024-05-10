@@ -12,4 +12,5 @@ public:
 
     void use(double usingFuel);
     void reload(double reload);
+    bool canUse(double usingFuel) const;
 };
