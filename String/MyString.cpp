@@ -25,6 +25,13 @@ MyString::MyString(const char* str){
     std::strcpy(this->str, str);
 }
 
+MyString::MyString(size_t length) {
+    this->capacity = dataToAllocByStringLen(length);
+    this->str = new char[this->capacity];
+    this->size = 0;
+    this->str[0] = '\0';
+}
+
 MyString::MyString(const MyString& other){
     copyFrom(other);
 }

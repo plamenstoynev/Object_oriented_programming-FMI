@@ -31,6 +31,7 @@ public:
     ~MyString();
 
 private:
+    explicit MyString(size_t length);
     void resize(unsigned newAllocatedDataSize);
 
     void copyFrom(const MyString& other);
