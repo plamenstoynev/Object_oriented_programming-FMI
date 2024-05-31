@@ -1,1 +1,1 @@
-#include "StringStraigth.h"
+#include "StringStraight.h"

@@ -1,16 +1,10 @@
-//
-// Created by plame on 5/16/2024.
-//
+#include "Employee.h"
+class CommisionEmployee : public Employee{
+private:
+    double commision;
+public:
+    CommisionEmployee() = default;
+    CommisionEmployee(const MyString& name, double salary, double commision);
 
-#ifndef OOP_PRACT_COMMISIONEMPLOYEE_H
-#define OOP_PRACT_COMMISIONEMPLOYEE_H
-
-
-
-class CommisionEmployee {
-
+    double calculateSalary() const override;
 };
-
-
-
-#endif //OOP_PRACT_COMMISIONEMPLOYEE_H

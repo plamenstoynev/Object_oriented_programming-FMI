@@ -1,16 +1,9 @@
-//
-// Created by plame on 5/16/2024.
-//
-
-#ifndef OOP_PRACT_HOURLYEMPLOYEE_H
-#define OOP_PRACT_HOURLYEMPLOYEE_H
-
-
-
-class HourlyEmployee {
-
+#include "Employee.h"
+class HourlyEmployee : public Employee{
+private:
+    unsigned overtime;
+public:
+    HourlyEmployee() = default;
+    HourlyEmployee(const MyString& name, double salary, unsigned overtime);
+    double calculateSalary() const override;
 };
-
-
-
-#endif //OOP_PRACT_HOURLYEMPLOYEE_H

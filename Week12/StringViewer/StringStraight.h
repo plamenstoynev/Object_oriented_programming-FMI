@@ -1,14 +1,17 @@
-//
-// Created by plame on 5/17/2024.
-//
+#include "StringViewer.h"
+class StringStraight : public StringViewer{
+private:
+    char* begin;
+    char* end;
+public:
+    StringStraight() = default;
+    StringStraight(const char* begin, const char* end);
 
-#ifndef OOP_PRACT_STRINGSTRAIGTH_H
-#define OOP_PRACT_STRINGSTRAIGTH_H
-
-
-class StringStraigth {
-
+    char operator[](size_t index) const override;
+    size_t length() const override;
+    bool isEmpty() const override;
+    void removeSuffix(size_t count) override;
+    void removePrefix(size_t count) override;
+    StringViewer* substr(size_t pos, size_t count)override;
+    int indexOf() const override;
 };
-
-
-#endif //OOP_PRACT_STRINGSTRAIGTH_H

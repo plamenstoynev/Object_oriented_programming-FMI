@@ -1,16 +1,15 @@
-//
-// Created by plame on 5/17/2024.
-//
+#pragma once
+#include "Set.h"
+class SetUnion : public Set{
+private:
+    const Set* firstSet = nullptr;
+    const Set* secondSet = nullptr;
+public:
+    SetUnion() = default;
+    SetUnion(const Set& firstSet, const Set& secondSet);
+    Set* virtualCopy() const override;
 
-#ifndef OOP_PRACT_SETUNION_H
-#define OOP_PRACT_SETUNION_H
+    bool member(unsigned int num) const override;
 
-
-
-class SetUnion {
-
+    ~SetUnion() override;
 };
-
-
-
-#endif //OOP_PRACT_SETUNION_H

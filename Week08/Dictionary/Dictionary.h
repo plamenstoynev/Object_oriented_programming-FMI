@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\plame\CLionProjects\OOP_Pract\String\MyString.h"
+#include "../../String/MyString.h"
 class Dictionary {
 private:
     MyString* words;
@@ -24,6 +24,6 @@ private:
     void free();
 
     bool checkWord(const MyString& word);
+    void resize();
 };
 Dictionary& operator+(const Dictionary& lhs, const Dictionary& rhs);
-void resize(Dictionary& dictionary);

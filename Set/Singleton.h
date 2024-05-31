@@ -1,16 +1,14 @@
-//
-// Created by plame on 5/17/2024.
-//
+#pragma once
+#include "Set.h"
+class Singleton : public Set{
+private:
+    unsigned int num;
+public:
+    Singleton() = default;
+    Singleton(unsigned int num);
+    Set* virtualCopy() const override;
 
-#ifndef OOP_PRACT_SINGLETON_H
-#define OOP_PRACT_SINGLETON_H
+    bool member(unsigned int num) const override;
 
-
-
-class Singleton {
-
+    ~Singleton() override;
 };
-
-
-
-#endif //OOP_PRACT_SINGLETON_H

@@ -63,6 +63,6 @@ Dictionary& operator+(const Dictionary& lhs, const Dictionary& rhs){
 
 }
 
-void resize(Dictionary& dictionary){
-    dictionary.size *= 2;
+void Dictionary::resize(){
+    this->size *= 2;
 }

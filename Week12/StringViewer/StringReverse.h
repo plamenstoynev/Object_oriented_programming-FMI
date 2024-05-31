@@ -1,16 +1,14 @@
-//
-// Created by plame on 5/17/2024.
-//
-
-#ifndef OOP_PRACT_STRINGREVERSE_H
-#define OOP_PRACT_STRINGREVERSE_H
-
-
-
-class StringReverse {
-
+#include "StringViewer.h"
+class StringReverse : public StringViewer {
+private:
+    char* start;
+    char* end;
+public:
+    char operator[](size_t index) const override;
+    size_t length() const override;
+    bool isEmpty() const override;
+    void removeSuffix(size_t count) override;
+    void removePrefix(size_t count) override;
+    StringViewer* substr(size_t pos, size_t count)override;
+    int indexOf() const override;
 };
-
-
-
-#endif //OOP_PRACT_STRINGREVERSE_H
