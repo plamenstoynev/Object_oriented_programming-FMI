@@ -8,6 +8,4 @@ private:
 public:
     Case0(int32_t* x,int32_t* values, uint16_t sizeOfNumbers);
     Pair operator()(int32_t x) const;
-private:
-
 };

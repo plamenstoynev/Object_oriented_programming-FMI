@@ -11,5 +11,5 @@ public:
 
     bool member(unsigned int num) const override;
 
-    ~SetUnion() override;
+    virtual ~SetUnion() = default;
 };

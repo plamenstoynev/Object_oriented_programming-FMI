@@ -94,7 +94,7 @@ private:
             temp[i] = this->data[i];
 
         delete[] this->data;
-        
+
         this->data = temp;
         this->capacity *= 2;
     }

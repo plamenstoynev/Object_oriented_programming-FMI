@@ -10,5 +10,5 @@ public:
 
     bool member(unsigned int num) const override;
 
-    ~Singleton() override;
+    virtual ~Singleton() = default;
 };

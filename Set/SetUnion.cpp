@@ -9,6 +9,6 @@ bool SetUnion::member(unsigned int num) const {
 }
 
 Set* SetUnion::virtualCopy() const {
-    SetUnion* obj = new SetUnion();
+    SetUnion* obj = new SetUnion(*this);
     return obj;
 }

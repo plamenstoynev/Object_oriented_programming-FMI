@@ -1,10 +1,10 @@
 #include "EvenSet.h"
 
-bool EvenSet::member(unsigned int num) const {
-    return num % 2 ==0;
+bool EvenSet::member(unsigned int x) const {
+    return x % 2 == 0;
 }
 
 Set* EvenSet::virtualCopy() const {
-    EvenSet* obj = new EvenSet();
-    return obj;
+    EvenSet* set = new EvenSet(*this);
+    return set;
 }
