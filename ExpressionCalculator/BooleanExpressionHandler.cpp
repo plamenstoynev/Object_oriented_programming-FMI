@@ -11,7 +11,7 @@ BooleanExpressionHandler& BooleanExpressionHandler::operator=(const BooleanExpre
         free();
         copyFrom(other);
     }
-    return this;
+    return *this;
 }
 BooleanExpressionHandler::BooleanExpressionHandler(const BooleanExpressionHandler&& other){
     moveFrom(std::move(other));
@@ -50,10 +50,10 @@ bool BooleanExpressionHandler::checkAllTrueAssignments(bool value) const{
 void BooleanExpressionHandler::free(){
     deletete expr;
 }
-void BooleanExpressionHandler::copyFrom(BooleanExpressionHandler& other){
+void BooleanExpressionHandler::copyFrom(BooleanExpressionHandler other){
     expr = other.expr;
 }
-void BooleanExpressionHandler::moveFrom(BooleanExpressionHandler&& other){
+void BooleanExpressionHandler::moveFrom(BooleanExpressionHandler other){
     expr = other.expr;
     other.expr = nullptr;
 }

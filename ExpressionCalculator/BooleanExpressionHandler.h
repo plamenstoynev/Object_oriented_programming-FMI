@@ -23,6 +23,6 @@ public:
 private:
     bool checkAllTrueAssignments(bool value) const;
     void free();
-    void copyFrom(BooleanExpressionHandler& other);
-    void moveFrom(BooleanExpressionHandler&& other);
+    void copyFrom(const BooleanExpressionHandler& other);
+    void moveFrom(const BooleanExpressionHandler& other);
 };
